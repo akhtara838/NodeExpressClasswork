@@ -1,7 +1,7 @@
 const express = require("express"), app = express(),
 homeController = require("./controllers/homecontroller"),
 errorController = require("./controllers/errorController"),
-layouts = require("express-ejs-layouts");
+layouts = require('express-ejs-layouts');
 
 
 app.set("port", process.env.PORT || 3000);
@@ -24,8 +24,8 @@ app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignup);
 app.post("/contact", homeController.postedSignUpForm);
 
- app.use(errorController.pageNotFoundError);
- app.use(errorController.internalServerError)
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError)
 
 
 app.listen(app.get("port"), () => {

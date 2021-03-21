@@ -1,5 +1,5 @@
 const express = require("express"), app = express(),
-homecontroller = require("./controllers/homecontroller"),
+homeController = require("./controllers/homecontroller"),
 errorController = require("./controllers/errorController"),
 layouts = require("express-ejs-layouts");
 
@@ -8,7 +8,7 @@ app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(layouts);
 
-app.get("/", homecontroller.showIndex);
+app.get("/", homeController.showIndex);
 
 
 app.use(express.static("public"))
@@ -20,12 +20,12 @@ app.use(
 
 app.use(express.json());
 
-app.get("/courses", homecontroller.showCourses);
-app.get("/contact", homecontroller.showSignup);
-app.post("/contact", homecontroller.postedSignUpForm);
+app.get("/courses", homeController.showCourses);
+app.get("/contact", homeController.showSignup);
+app.post("/contact", homeController.postedSignUpForm);
 
-app.use(errorController.pageNotFoundError);
-app.use(errorController.internalServerError)
+ app.use(errorController.pageNotFoundError);
+ app.use(errorController.internalServerError)
 
 
 app.listen(app.get("port"), () => {
